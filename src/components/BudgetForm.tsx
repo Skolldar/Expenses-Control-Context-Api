@@ -1,5 +1,18 @@
+import { useMemo, useState } from "react";
 
 const BudgetForm = () => {
+
+  const [budget, setbudget] = useState(0);
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setbudget(e.target.valueAsNumber); //value para ver el valor, AsNumber para convertirlo a numero
+  }
+
+  const isValid = useMemo(() => {
+   // console.log(isNaN(budget)) // cuando no es un numero aparecera TRUE
+    return isNaN(budget) || budget <= 0 
+  }, [budget])
+
   return (
     <>
     <form className="space-y-5">
@@ -10,15 +23,18 @@ const BudgetForm = () => {
             <input
                 id="budget"
                 type="number"
-                className="w-full bg-white border-3xl  border-gray-200 p-2"
+                className="w-full bg-white border-gray-200 p-2"
                 placeholder="Define Budget"
                 name="budget"
+                value={budget}
+                onChange={handleChange}
             />
         </div>
         <input
           type="submit"
-          value="Define Presupuesto"
-          className="bg-teal-600 hover:bg-teal-700 cursor-pointer uppercase w-full p-2 text-white"
+          value="Save Budget"
+          className="bg-teal-600 hover:bg-teal-700 cursor-pointer uppercase w-full p-2 text-white font-bold rounded-md disabled:opacity-30"
+          disabled={isValid}
         />
     </form>
     </>
