@@ -1,6 +1,10 @@
 
 import BudgetForm from "./components/BudgetForm"
+import { BudgetContext } from "./context/BudgetContext"
 function App() {
+
+  //con useContext accedemos a todo lo que retorna el value.
+  const context = useContext(BudgetContext)
 
   return (
     <>
