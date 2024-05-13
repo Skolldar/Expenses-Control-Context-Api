@@ -4,7 +4,8 @@ import { BudgetContext } from "./context/BudgetContext"
 function App() {
 
   //con useContext accedemos a todo lo que retorna el value.
-  const context = useContext(BudgetContext)
+  //Aunque la mejor forma de hacerlo es atraves de un custom hook:
+  //const context = useContext(BudgetContext)
 
   return (
     <>
