@@ -1,10 +1,17 @@
-
+import { useMemo } from "react"
 import BudgetForm from "./components/BudgetForm"
+import { useBudget } from "./hooks/useBudget"
+import BudgetTracker from "./components/BudgetTracker"
 function App() {
-
   //con useContext accedemos a todo lo que retorna el value.
   //Aunque la mejor forma de hacerlo es atraves de un custom hook:
   //const context = useContext(BudgetContext)
+
+
+  const {state} = useBudget()
+
+  const isValidBudget = useMemo(() => state.budget > 0, [state.budget] )
+
 
   return (
     <>
@@ -13,7 +20,9 @@ function App() {
       </header>
 
       <div className="translate-y-[-3rem] max-w-3xl mx-auto bg-white shadow-lg rounded-3xl p-10">
-        <BudgetForm/>
+        {isValidBudget 
+          ? <BudgetTracker/> 
+          : <BudgetForm />}
       </div>
     </>
   )
