@@ -7,6 +7,14 @@ const BudgetTracker = () => {
             <img src="/grafico.jpg" alt="Grafico"/>
 
         </div>
+        <div className="flex flex-col justify-center items-center gap-8">
+            <button
+            type="button"
+            className="bg-yellow-600 w-full p-2 text-white uppercase font-bold rounded-lg"
+            >
+                Reset App
+            </button>
+        </div>
     </div>
     </>
   )
