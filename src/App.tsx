@@ -1,13 +1,10 @@
 
 import BudgetForm from "./components/BudgetForm"
-import {useBudget} from "./hooks/useBudget"
 function App() {
 
   //con useContext accedemos a todo lo que retorna el value.
   //Aunque la mejor forma de hacerlo es atraves de un custom hook:
   //const context = useContext(BudgetContext)
-
-  const {state, dispatch} = useBudget()
 
   return (
     <>
