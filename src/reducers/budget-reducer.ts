@@ -2,12 +2,14 @@
 //Acciones:
 export type BudgetActions = 
 {type : 'add-budget', payload: {budget: number}} |
-{type: 'show-modal'}
+{type: 'show-modal'} |
+{type: 'close-modal'}
 
 //state local:
 export type BudgetState = {
     budget : number,
-    modal:boolean
+    modal:boolean,
+
 }
 
 //se le sincronizza con budgetstate
@@ -35,5 +37,13 @@ export const budgetReducer = (
             modal: true
         }
     }
+
+    if(action.type === 'close-modal') {
+        return {
+            ...state,
+            modal: false
+        }
+    }
+
     return state
 }
