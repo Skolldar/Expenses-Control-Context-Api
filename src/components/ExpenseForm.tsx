@@ -18,7 +18,7 @@ const ExpenseForm = () => {
             <input
                 type="text"
                 id="expenseName"
-                placeholder="add the name of the expense"
+                placeholder="Add the name of the expense"
                 className="bg-slate-100 p-2 rounded-lg"
                 name="expenseName"
             />
@@ -34,7 +34,7 @@ const ExpenseForm = () => {
             <input
                 type="number"
                 id="amount"
-                placeholder="add the amount ex: 300"
+                placeholder="Add the amount ex: 300"
                 className="bg-slate-100 p-2 rounded-lg"
                 name="amount"
             />
