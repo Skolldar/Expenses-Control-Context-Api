@@ -1,6 +1,20 @@
+import { useState } from "react"
+import {DarftExpense} from "../types"
 import { categories } from "../data/categories"
+import DatePicker from 'react-date-picker'
+import 'react-calendar/dist/Calendar.css'
+import 'react-date-picker/dist/DatePicker.css'
+
 
 const ExpenseForm = () => {
+    const [expense, setExpenses] = useState<DarftExpense>({
+        amount: 0,
+        expenseName: '',
+        category: '',
+        date: new Date()
+    })
+
+
   return (
     <>
     <form className="space-y-5">
@@ -21,6 +35,7 @@ const ExpenseForm = () => {
                 placeholder="Add the name of the expense"
                 className="bg-slate-100 p-2 rounded-lg"
                 name="expenseName"
+                value={expense.expenseName}
             />
         </div>
 
@@ -37,6 +52,8 @@ const ExpenseForm = () => {
                 placeholder="Add the amount ex: 300"
                 className="bg-slate-100 p-2 rounded-lg"
                 name="amount"
+                value={expense.amount}
+
             />
         </div>
 
@@ -50,7 +67,9 @@ const ExpenseForm = () => {
             <select
                 id="category"
                 className="bg-slate-100 p-2 rounded-lg"
-                name="category">
+                name="category"
+                value={expense.category}
+                >
 
                     <option value="">-- Select --</option>
                     {categories.map(category => (
@@ -62,6 +81,19 @@ const ExpenseForm = () => {
                         </option>
                     ))}
             </select>
+        </div>
+
+        <div className="flex flex-col gap-2">
+            <label
+            htmlFor="amount"
+            className="text-xl">
+        Fecha Gasto:
+            </label>
+            <DatePicker 
+                className="bg-slate-100 p-2 border-0-"
+                value={expense.date}
+            />
+
         </div>
 
         <input 
