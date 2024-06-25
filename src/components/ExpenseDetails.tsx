@@ -29,9 +29,9 @@ const ExpenseDetails = ({expense} : ExpenseDetailsProps)  => {
   const leadingActions = () => (
     <LeadingActions>
       <SwipeAction
-        onClick={() => {}} 
+        onClick={() => dispatch({type: 'get-expense-by-id', playload:{id: expense.id}})} 
       >
-        Actualizar
+        Edit
       </SwipeAction>
     </LeadingActions>
   )
@@ -42,7 +42,7 @@ const ExpenseDetails = ({expense} : ExpenseDetailsProps)  => {
         onClick={() => dispatch({type: 'remove-expense', playload: {id: expense.id}})} 
         destructive={true} //eliminar animacion
       >
-        Eliminar
+        Delete
       </SwipeAction>
     </TrailingActions>
   )
