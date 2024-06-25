@@ -8,20 +8,23 @@ export type BudgetActions =
 {type: 'show-modal'} |
 {type: 'close-modal'} |
 {type: 'add-expense', playload: {expense: DarftExpense}} |
-{type: 'remove-expense', playload: {id: Expense['id']}}
+{type: 'remove-expense', playload: {id: Expense['id']}} |
+{type: 'get-expense-by-id', playload: {id: Expense['id']}} 
 
 //state local:
 export type BudgetState = {
-    budget : number,
-    modal:boolean,
+    budget : number
+    modal:boolean
     expenses: Expense[]
+    editingId: Expense['id'] //using look up to edit 
 }
 
 //se le sincronizza con budgetstate
 export const initialState : BudgetState = {
     budget : 0,
     modal: false,
-    expenses: []
+    expenses: [],
+    editingId: ''
 }
 
 const createExpense = (draftExpense: DarftExpense) : Expense => {
@@ -72,6 +75,13 @@ export const budgetReducer = (
             ...state,
             expenses: state.expenses.filter(expense => expense.id !== action.playload.id)
         }
-        
+
+        if(action.type === 'get-expense-by-id')
+            return {
+                ...state,
+                editingId: action.playload.id,
+                modal: true
+            }
+
         return state
     }
