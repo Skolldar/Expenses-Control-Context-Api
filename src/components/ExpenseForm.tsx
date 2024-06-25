@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import {DarftExpense, Value} from "../types"
 import { categories } from "../data/categories"
 import DatePicker from 'react-date-picker'
@@ -12,7 +12,14 @@ const ExpenseForm = () => {
 
     const [error, setError] = useState('')
     
-    const {dispatch} = useBudget()
+    const {dispatch, state} = useBudget()
+
+    useEffect(() => {
+        if(state.editingId) {
+            const editingExpense = state.expenses.filter(currentExpense => currentExpense.id === state.editingId) [0] //retorna un arreglo posicion 0
+            setExpenses(editingExpense) //regresamos de lo local a lo logabla para tener la validacion
+        }
+    }, [state.editingId])
 
     const [expense, setExpenses] = useState<DarftExpense>({
         amount: 0,
