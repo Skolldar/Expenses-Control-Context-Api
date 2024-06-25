@@ -25,8 +25,9 @@ const ExpenseDetails = ({expense} : ExpenseDetailsProps) => {
         />
       </div>
 
-      <div>
+      <div className="flex-1 space-y-2">
         <p className="text-sm font-bold uppercase text-slate-500">{categoryInfo.name}</p>
+
         <p>{expense.expenseName}</p>                            
         <p className="text-slate-600 text-sm">{formatDate(expense.date!.toString())}</p>
       </div>
