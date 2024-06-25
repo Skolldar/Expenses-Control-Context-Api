@@ -7,7 +7,8 @@ export type BudgetActions =
 {type : 'add-budget', payload: {budget: number}} |
 {type: 'show-modal'} |
 {type: 'close-modal'} |
-{type: 'add-expense', playload: {expense: DarftExpense}}
+{type: 'add-expense', playload: {expense: DarftExpense}} |
+{type: 'remove-expense', playload: {id: Expense['id']}}
 
 //state local:
 export type BudgetState = {
@@ -66,5 +67,11 @@ export const budgetReducer = (
         }
     }
 
-    return state
-}
+    if(action.type === 'remove-expense')
+        return {
+            ...state,
+            expenses: state.expenses.filter(expense => expense.id !== action.playload.id)
+        }
+        
+        return state
+    }
