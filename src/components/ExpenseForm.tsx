@@ -11,13 +11,16 @@ import { useBudget } from "../hooks/useBudget"
 const ExpenseForm = () => {
 
     const [error, setError] = useState('')
+
+    const [previousAmount, setPreviousAmount] = useState(0)
     
-    const {dispatch, state} = useBudget()
+    const {dispatch, state, remainingBudget} = useBudget()
 
     useEffect(() => {
         if(state.editingId) {
             const editingExpense = state.expenses.filter(currentExpense => currentExpense.id === state.editingId) [0] //retorna un arreglo posicion 0
             setExpenses(editingExpense) //regresamos de lo local a lo logabla para tener la validacion
+            setPreviousAmount(editingExpense.amount)
         }
     }, [state.editingId, state.expenses])
 
@@ -54,6 +57,12 @@ const ExpenseForm = () => {
             return
         }
 
+        // Validar que no se pase del limite del presupuesto
+        if((expense.amount - previousAmount) > remainingBudget) {
+            setError('Budget exceeded')
+            return
+        }
+
         //Agregar o actualizar nuevo gasto:
         if(state.editingId) {
             //Recuperamos el gasto del id desde el state.editingId y el resto tomara una copia del que tenemos como expense.
@@ -69,6 +78,7 @@ const ExpenseForm = () => {
             category: '',
             date: new Date()
         })
+        setPreviousAmount(0)
     }
 
   return (
