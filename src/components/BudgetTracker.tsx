@@ -1,6 +1,17 @@
+import { useMemo } from "react";
+import { useBudget } from "../hooks/useBudget" //para acceder al state
 import AmountDisplay from "./AmountDisplay"
 
 const BudgetTracker = () => {
+    //Accedemos al state desde el hook useBudget
+    const {state} = useBudget();
+
+    //se ejecutara cada que cambie el state de gastos, se pasa como dependencia [state.expenses]... hacemos el calculo que inicia en 0 y dara el total que hemos gastado del budget.
+    const totalExpenses = useMemo(() => state.expenses.reduce((total, expense) => expense.amount + total, 0 ), [state.expenses])
+
+    //Solo restamos lo anterior para que nos de el valor de lo que nos quede disponible
+    const remainingBudget = state.budget - totalExpenses
+
   return (
     <>
     <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
@@ -18,17 +29,17 @@ const BudgetTracker = () => {
 
             <AmountDisplay 
                 label="Budget"
-                amount={300}
+                amount={state.budget}
             />
 
             <AmountDisplay 
                 label="Available"
-                amount={200}
+                amount={remainingBudget}
             />
 
             <AmountDisplay 
                 label="Spent"
-                amount={100}
+                amount={totalExpenses}
             />
 
         </div>
