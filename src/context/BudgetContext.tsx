@@ -1,4 +1,4 @@
-import { useReducer, createContext, Dispatch, ReactNode } from "react";
+import { useReducer, createContext, Dispatch, ReactNode, useMemo } from "react";
 import { BudgetActions, BudgetState, budgetReducer, initialState } from "../reducers/budget-reducer";
 
 type BudgetContextProps = {
@@ -8,6 +8,9 @@ type BudgetContextProps = {
     state: BudgetState
     //Colocamos el BudgetActions como generic para decirle que si utilice la funcion pero sera dinamico por las acciones.
     dispatch:Dispatch<BudgetActions>
+
+    totalExpenses: number
+    remainingBudget: number
 }
 
 type BudgetProviderProps = {
@@ -29,6 +32,12 @@ export const BudgetProvider = ({children} : BudgetProviderProps) => {
     //el provider manejar de state y dispatch
     const [state, dispatch] = useReducer(budgetReducer, initialState)
 
+        //se ejecutara cada que cambie el state de gastos, se pasa como dependencia [state.expenses]... hacemos el calculo que inicia en 0 y dara el total que hemos gastado del budget.
+        const totalExpenses = useMemo(() => state.expenses.reduce((total, expense) => expense.amount + total, 0 ), [state.expenses])
+    
+        //Solo restamos lo anterior para que nos de el valor de lo que nos quede disponible
+        const remainingBudget = state.budget - totalExpenses
+
 
     return (
         //Conectar las funciones con el context:
@@ -38,7 +47,9 @@ export const BudgetProvider = ({children} : BudgetProviderProps) => {
         //es un prop especial que existe en provider y su value es igual y siempre es un obj, pero al serlo retornamos otro obj.    
         value={{
             state,
-            dispatch
+            dispatch,
+            totalExpenses,
+            remainingBudget
         }}
         >
             {children}
