@@ -10,7 +10,8 @@ export type BudgetActions =
 {type: 'add-expense', playload: {expense: DarftExpense}} |
 {type: 'remove-expense', playload: {id: Expense['id']}} |
 {type: 'get-expense-by-id', playload: {id: Expense['id']}} |
-{type: 'update-expense', playload: {expense: Expense}} 
+{type: 'update-expense', playload: {expense: Expense}} |
+{type: 'reset-app'}
 
 
 //state local:
@@ -111,6 +112,15 @@ export const budgetReducer = (
                 expenses: state.expenses.map(expense => expense.id === action.playload.expense.id ? action.playload.expense : expense),
                 modal: false,
                  editingId: ''
+            }
+        }
+
+        if(action.type === 'reset-app') {
+            return {
+                ...state,
+                budget : 0,
+                expenses: []
+
             }
         }
 
