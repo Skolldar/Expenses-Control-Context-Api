@@ -1,6 +1,6 @@
 import {v4 as uuidv4} from 'uuid';
 
-import { DarftExpense, Expense } from "../types"
+import { Category, DarftExpense, Expense } from "../types"
 
 //Acciones:
 export type BudgetActions = 
@@ -11,7 +11,8 @@ export type BudgetActions =
 {type: 'remove-expense', playload: {id: Expense['id']}} |
 {type: 'get-expense-by-id', playload: {id: Expense['id']}} |
 {type: 'update-expense', playload: {expense: Expense}} |
-{type: 'reset-app'}
+{type: 'reset-app'} |
+{type: 'add-filter-category', playload: {id: Category['id']}}
 
 
 //state local:
@@ -20,6 +21,7 @@ export type BudgetState = {
     modal:boolean
     expenses: Expense[]
     editingId: Expense['id'] //using look up to edit 
+    currentCategory: Category['id']
 }
 
 //Guardando el state  en el localstorage
@@ -42,7 +44,8 @@ export const initialState : BudgetState = {
     budget : initialBudget(), //aca hacemos llamar la funcion de nuestro localstoragebudget
     modal: false,
     expenses: localStorageExpenses(),
-    editingId: ''
+    editingId: '',
+    currentCategory: ''
 }
 
 const createExpense = (draftExpense: DarftExpense) : Expense => {
@@ -123,6 +126,14 @@ export const budgetReducer = (
 
             }
         }
+
+        if(action.type === 'add-filter-category') {
+            return {
+                ...state,
+                currentCategory: action.playload.id,
+            }
+        }
+
 
         return state
     }
