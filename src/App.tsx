@@ -31,14 +31,14 @@ function App() {
         <h1 className="max-w-5xl mx-auto font-bold text-white pb-10 text-7xl">Ctrl<span className="text-4xl">.Budget</span></h1>
       </header>
 
-      <div className="translate-y-[-5rem] max-w-3xl mx-auto bg-white shadow-lg rounded-3xl p-10">
+      <div className="translate-y-[-3rem] max-w-3xl mx-auto bg-white shadow-lg rounded-3xl p-10">
         {isValidBudget 
           ? <BudgetTracker/> 
           : <BudgetForm />}
       </div>
 
   {isValidBudget && (
-    <main className="max-w-3xl mx-auto py-10">
+    <main className="max-w-3xl mx-auto">
       <FilterByCategory/>
       <ExpenseList/>
       <ExpenseModal/>
