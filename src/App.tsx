@@ -28,7 +28,7 @@ function App() {
   return (
     <>
       <header className="bg-teal-600 bg-fixed p-20">
-        <h1 className="max-w-5xl mx-auto font-bold text-white pb-10 text-7xl">Ctrl<span className="text-4xl">.Budget</span></h1>
+        <h1 className="max-w-5xl mx-auto font-bold text-white pb-10 text-7xl">Control.<span className="text-4xl">Budget</span></h1>
       </header>
 
       <div className="translate-y-[-3rem] max-w-3xl mx-auto bg-white shadow-lg rounded-3xl p-10">
