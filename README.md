@@ -1,30 +1,43 @@
-# React + TypeScript + Vite
+# Expenses Control Context API
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+It is a simple expense planner where you can define a budget, form validation, and filter expenses by category.
 
-Currently, two official plugins are available:
+[![Control-Budget.png](https://i.postimg.cc/Pq22y8c5/Control-Budget.png)](https://postimg.cc/94wdFzC6)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Essential Technologies:
+- React
+- Tailwind CSS
+- Context API
+- useReducer
+- react-swipeable-list
+- react-day-picker
+- Headless UI
 
-## Expanding the ESLint configuration
+## Installation:
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+To set up the project, follow these steps:
 
-- Configure the top-level `parserOptions` property like this:
+1. Open your terminal and navigate to the project directory.
+2. Run `npm install` to install the necessary packages.
+3. Run `npm run dev` to automatically save changes.
+5. Now, you can access the project by opening your web browser `➜  Local:   http://localhost:5173/`
 
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
-```
+## Features:
+Puedes ingresar un nuevo gasto:
+[![Formulario-control.png](https://i.postimg.cc/K8GJ8qL4/Formulario-control.png)](https://postimg.cc/rKHSh9fL)
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+Filter your expenses and keep track of how much of your budget you have spent:
+[![control-filter.png](https://i.postimg.cc/brCFnrMD/control-filter.png)](https://postimg.cc/YLF3KrtM)
+
+Drag to the RIGHT to EDIT.
+Drag to the LEFT you can DELETE.
+[![delete-edit.png](https://i.postimg.cc/mrQwWjY2/delete-edit.png)](https://postimg.cc/8FzWhhXq)
+
+
+## How to Contribute:
+
+If you have any suggestions or comments, please feel free to share them with me.
+
+## 
+
+ **I greatly appreciate your help and support in this project!**
