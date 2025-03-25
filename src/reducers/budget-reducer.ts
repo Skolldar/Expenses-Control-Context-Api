@@ -4,12 +4,13 @@ import { DarftExpense, Expense } from "../types"
 
 //Acciones:
 export type BudgetActions = 
-{type : 'add-budget', payload: {budget: number}} |
+{type : 'add-budget', playload: {budget: number}} |
 {type: 'show-modal'} |
 {type: 'close-modal'} |
 {type: 'add-expense', playload: {expense: DarftExpense}} |
 {type: 'remove-expense', playload: {id: Expense['id']}} |
-{type: 'get-expense-by-id', playload: {id: Expense['id']}} 
+{type: 'get-expense-by-id', playload: {id: Expense['id']}} |
+{type: 'add-filter-category', playload: {id: string}};
 
 //state local:
 export type BudgetState = {
@@ -17,6 +18,7 @@ export type BudgetState = {
     modal:boolean
     expenses: Expense[]
     editingId: Expense['id'] //using look up to edit 
+    filteredCategory: string
 }
 
 //se le sincronizza con budgetstate
@@ -24,7 +26,8 @@ export const initialState : BudgetState = {
     budget : 0,
     modal: false,
     expenses: [],
-    editingId: ''
+    editingId: '',
+    filteredCategory: ''
 }
 
 const createExpense = (draftExpense: DarftExpense) : Expense => {
@@ -42,7 +45,7 @@ export const budgetReducer = (
     if(action.type === 'add-budget') {
         return {
             ...state,
-            budget : action.payload.budget
+            budget : action.playload.budget
         }
     }
 
@@ -82,6 +85,13 @@ export const budgetReducer = (
                 editingId: action.playload.id,
                 modal: true
             }
+
+            if (action.type === 'add-filter-category') {
+                return {
+                  ...state,
+                  filteredCategory: action.playload.id
+                }
+              }
 
         return state
     }
