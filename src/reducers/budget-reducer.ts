@@ -4,7 +4,7 @@ import { Category, DarftExpense, Expense } from "../types"
 
 //Acciones:
 export type BudgetActions = 
-{type : 'add-budget', payload: {budget: number}} |
+{type : 'add-budget', playload: {budget: number}} |
 {type: 'show-modal'} |
 {type: 'close-modal'} |
 {type: 'add-expense', playload: {expense: DarftExpense}} |
@@ -45,7 +45,7 @@ export const initialState : BudgetState = {
     modal: false,
     expenses: localStorageExpenses(),
     editingId: '',
-    currentCategory: ''
+    currentCategory: '',
 }
 
 const createExpense = (draftExpense: DarftExpense) : Expense => {
@@ -63,7 +63,7 @@ export const budgetReducer = (
     if(action.type === 'add-budget') {
         return {
             ...state,
-            budget : action.payload.budget
+            budget : action.playload.budget
         }
     }
 
