@@ -11,15 +11,18 @@ import { useBudget } from "../hooks/useBudget"
 const ExpenseForm = () => {
 
     const [error, setError] = useState('')
+
+    const [previousAmount, setPreviousAmount] = useState(0)
     
-    const {dispatch, state} = useBudget()
+    const {dispatch, state, remainingBudget} = useBudget()
 
     useEffect(() => {
         if(state.editingId) {
             const editingExpense = state.expenses.filter(currentExpense => currentExpense.id === state.editingId) [0] //retorna un arreglo posicion 0
             setExpenses(editingExpense) //regresamos de lo local a lo logabla para tener la validacion
+            setPreviousAmount(editingExpense.amount)
         }
-    }, [state.editingId])
+    }, [state.editingId, state.expenses])
 
     const [expense, setExpenses] = useState<DarftExpense>({
         amount: 0,
@@ -54,15 +57,34 @@ const ExpenseForm = () => {
             return
         }
 
-        //Agregar nuevo gasto
-        dispatch({type: 'add-expense', playload: {expense}})
+        // Validar que no se pase del limite del presupuesto
+        if((expense.amount - previousAmount) > remainingBudget) {
+            setError('Budget exceeded')
+            return
+        }
+
+        //Agregar o actualizar nuevo gasto:
+        if(state.editingId) {
+            //Recuperamos el gasto del id desde el state.editingId y el resto tomara una copia del que tenemos como expense.
+            dispatch({type: 'update-expense', playload:{ expense: {id: state.editingId, ...expense}}})
+        } else {
+            dispatch({type: 'add-expense', playload: {expense}})
+        }
+
+        //reiniciar formulario
+        setExpenses({
+            amount: 0,
+            expenseName: '',
+            category: '',
+            date: new Date()
+        })
+        setPreviousAmount(0)
     }
 
   return (
     <>
     <form className="space-y-5" onSubmit={handleSubmit}>
-        <legend className="uppercase text-center text-2xl font-black border-b-4 py-2 border-teal-500 ">
-            New Expense
+        <legend className="uppercase text-center text-2xl font-black border-b-4 py-2 border-teal-500 ">{state.editingId ? 'Save Changes' : 'New Expense'}
         </legend>
 
         {error &&
@@ -151,7 +173,7 @@ const ExpenseForm = () => {
         <input 
             type="submit"
             className="bg-teal-500 cursor-pointer w-full p-2 text-white uppercase font-bold rounded-lg"
-            value={'Register Expenses'}
+            value={state.editingId ? 'Save Changes' : 'Record Expense'}
         />
     </form>
     </>
