@@ -39,7 +39,7 @@ const BudgetTracker = () => {
         <div className="flex flex-col justify-center items-center gap-8">
             <button
             type="button"
-            className="bg-yellow-600 w-full p-2 text-white uppercase font-bold rounded-lg"
+            className="bg-yellow-400 hover:bg-yellow-500 w-full p-2 text-white uppercase font-bold rounded-lg"
             onClick={() => dispatch({type: 'reset-app'})}
             >
                 Reset App

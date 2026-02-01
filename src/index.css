@@ -24,3 +24,12 @@ body {
   font-weight: <weight>;
   font-style: normal;
 }
+
+.react-date-picker,
+.react-date-picker__wrapper,
+.react-date-picker__inputGroup__input,
+.react-date-picker__inputGroup input,
+.react-date-picker__button {
+  border: none !important;
+}
+

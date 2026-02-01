@@ -158,12 +158,12 @@ const ExpenseForm = () => {
 
         <div className="flex flex-col gap-2">
             <label
-            htmlFor="amount"
+            htmlFor="date"
             className="text-xl">
         Fecha Gasto:
             </label>
             <DatePicker 
-                className="bg-slate-100 p-2 border-0-"
+                className="bg-slate-100 p-2 rounded-lg"
                 value={expense.date}
                 onChange={handleChangeDate}
             />
