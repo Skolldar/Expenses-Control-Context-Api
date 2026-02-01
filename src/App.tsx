@@ -29,12 +29,12 @@ function App() {
     <>
       <header className="bg-teal-600 pb-52  px-10">
         <div className="max-w-8xl mx-auto flex items-center pt-10">
-          <img src="/graph-whiteLogo.svg" alt="logo control budget" className="w-40"/>
+          <img src="/graph-whiteLogo.svg" alt="logo control budget" className="w-36"/>
           <h1 className="font-bold text-white text-5xl text-left">FlowState</h1>
         </div>
       </header>
 
-      <div className="translate-y-[-13rem] max-w-3xl mx-auto bg-white shadow-lg rounded-3xl p-10">
+      <div className="translate-y-[-11rem] max-w-3xl mx-auto bg-white shadow-lg rounded-3xl p-10">
         {isValidBudget 
           ? <BudgetTracker/> 
           : <BudgetForm />}
@@ -42,7 +42,7 @@ function App() {
 
     {isValidBudget && (
       <main className="max-w-3xl mx-auto">
-        <div className="translate-y-[-10rem]">
+        <div className="translate-y-[-9rem]">
         <FilterByCategory/>
         <ExpenseList/>
         </div>
