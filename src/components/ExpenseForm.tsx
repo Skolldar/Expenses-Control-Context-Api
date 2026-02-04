@@ -84,7 +84,7 @@ const ExpenseForm = () => {
   return (
     <>
     <form className="space-y-5" onSubmit={handleSubmit}>
-        <legend className="uppercase text-center text-2xl font-black border-b-4 py-2 border-teal-500 ">{state.editingId ? 'Save Changes' : 'New Expense'}
+        <legend className="uppercase text-center text-2xl font-black border-b-4 py-5 border-teal-500 ">{state.editingId ? 'Save Changes' : 'New Expense'}
         </legend>
 
         {error &&
@@ -103,7 +103,7 @@ const ExpenseForm = () => {
                 type="text"
                 id="expenseName"
                 placeholder="Add the name of the expense"
-                className="bg-slate-100 p-2 rounded-lg"
+                className="bg-slate-100 lg:p-2 p-4 rounded-lg text-xl"
                 name="expenseName"
                 value={expense.expenseName}
                 onChange={handleChange}
@@ -121,7 +121,7 @@ const ExpenseForm = () => {
                 type="number"
                 id="amount"
                 placeholder="Add the amount ex: 300"
-                className="bg-slate-100 p-2 rounded-lg"
+                className="bg-slate-100 lg:p-2 p-4 rounded-lg text-md"
                 name="amount"
                 value={expense.amount}
                 onChange={handleChange}
@@ -138,7 +138,7 @@ const ExpenseForm = () => {
 
             <select
                 id="category"
-                className="bg-slate-100 p-2 rounded-lg"
+                className="bg-slate-100 lg:p-2 p-4 rounded-lg text-md"
                 name="category"
                 value={expense.category}
                 onChange={handleChange}
@@ -163,7 +163,7 @@ const ExpenseForm = () => {
         Fecha Gasto:
             </label>
             <DatePicker 
-                className="bg-slate-100 p-2 rounded-lg"
+                className="bg-slate-100 lg:p-2 p-4 rounded-lg text-md"
                 value={expense.date}
                 onChange={handleChangeDate}
             />
@@ -172,7 +172,7 @@ const ExpenseForm = () => {
 
         <input 
             type="submit"
-            className="bg-teal-500 cursor-pointer w-full p-2 text-white uppercase font-bold rounded-lg"
+            className="bg-teal-500 cursor-pointer w-full lg:p-2 p-4 text-white uppercase font-bold rounded-lg"
             value={state.editingId ? 'Save Changes' : 'Record Expense'}
         />
     </form>

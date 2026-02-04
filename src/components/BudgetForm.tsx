@@ -24,13 +24,13 @@ const BudgetForm = () => {
     <>
     <form className="space-y-5 py-10" onSubmit={handleSubmit}>
         <div className="flex flex-col space-y-5 mb-3">
-            <label htmlFor="budget" className="text-4xl text-teal-500 font-bold text-center">
+            <label htmlFor="budget" className="lg:text-4xl text-2xl text-teal-500 font-bold text-center">
                 Define Budget
             </label>
             <input
                 id="budget"
                 type="number"
-                className="w-full bg-white border rounded-lg border-gray-200 p-2"
+                className="w-full lg:text-xl text-md bg-white border rounded-lg border-gray-200 p-4"
                 placeholder="Define Budget"
                 name="budget"
                 value={budget}
@@ -40,7 +40,7 @@ const BudgetForm = () => {
         <input
           type="submit"
           value="Add Budget"
-          className="bg-teal-600 hover:bg-teal-700 cursor-pointer uppercase w-full p-2 text-white font-bold rounded-lg disabled:opacity-30"
+          className="bg-teal-600 hover:bg-teal-700 cursor-pointer uppercase w-full p-4 text-white lg:text-xl text-md font-bold rounded-lg disabled:opacity-30"
           disabled={isValid}
         />
     </form>

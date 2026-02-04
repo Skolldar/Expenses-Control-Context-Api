@@ -27,10 +27,10 @@ function App() {
 
   return (
     <>
-      <header className="bg-teal-600 pb-52  px-10">
-        <div className="max-w-8xl mx-auto flex items-center pt-10">
-          <img src="/graph-whiteLogo.svg" alt="logo control budget" className="w-36"/>
-          <h1 className="font-bold text-white text-5xl text-left">FlowState</h1>
+      <header className="bg-teal-600 lg:pb-52 pb-[20rem] lg:px-10 px-5">
+        <div className="max-w-8xl mx-auto flex items-center pt-10 gap-3">
+          <img src="/graph-whiteLogo.svg" alt="logo control budget" className="lg:w-36 w-28"/>
+          <h1 className="font-bold text-white lg:text-5xl text-3xl text-left">FlowState</h1>
         </div>
       </header>
 
