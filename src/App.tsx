@@ -27,21 +27,21 @@ function App() {
 
   return (
     <>
-      <header className="bg-teal-600 lg:pb-52 pb-[20rem] lg:px-10 px-5">
-        <div className="max-w-8xl mx-auto flex items-center pt-10 gap-3">
+      <header className="bg-teal-600 pb-52 lg:px-10 px-5">
+        <div className="mx-auto flex items-center pt-10 gap-3">
           <img src="/graph-whiteLogo.svg" alt="logo control budget" className="lg:w-36 w-28"/>
           <h1 className="font-bold text-white lg:text-5xl text-3xl text-left">FlowState</h1>
         </div>
       </header>
 
-      <div className="translate-y-[-11rem] max-w-3xl mx-auto bg-white shadow-lg rounded-3xl p-10">
+      <div className="translate-y-[-11rem] lg:max-w-3xl max-w-2xl mx-auto bg-white shadow-lg rounded-3xl p-10">
         {isValidBudget 
           ? <BudgetTracker/> 
           : <BudgetForm />}
       </div>
 
     {isValidBudget && (
-      <main className="max-w-3xl mx-auto">
+      <main className="lg:max-w-3xl max-w-2xl mx-auto">
         <div className="translate-y-[-9rem]">
         <FilterByCategory/>
         <ExpenseList/>

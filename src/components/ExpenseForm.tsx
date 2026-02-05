@@ -103,7 +103,7 @@ const ExpenseForm = () => {
                 type="text"
                 id="expenseName"
                 placeholder="Add the name of the expense"
-                className="bg-slate-100 lg:p-2 p-4 rounded-lg text-xl"
+                className="bg-slate-100 lg:p-2 p-4 rounded-lg text-base"
                 name="expenseName"
                 value={expense.expenseName}
                 onChange={handleChange}
@@ -121,7 +121,7 @@ const ExpenseForm = () => {
                 type="number"
                 id="amount"
                 placeholder="Add the amount ex: 300"
-                className="bg-slate-100 lg:p-2 p-4 rounded-lg text-md"
+                className="bg-slate-100 lg:p-2 p-4 rounded-lg text-base"
                 name="amount"
                 value={expense.amount}
                 onChange={handleChange}
@@ -138,7 +138,7 @@ const ExpenseForm = () => {
 
             <select
                 id="category"
-                className="bg-slate-100 lg:p-2 p-4 rounded-lg text-md"
+                className="bg-slate-100 lg:p-2 p-4 rounded-lg text-base"
                 name="category"
                 value={expense.category}
                 onChange={handleChange}
@@ -159,11 +159,11 @@ const ExpenseForm = () => {
         <div className="flex flex-col gap-2">
             <label
             htmlFor="date"
-            className="text-xl">
+            className="lg:text-xl text-lg">
         Fecha Gasto:
             </label>
             <DatePicker 
-                className="bg-slate-100 lg:p-2 p-4 rounded-lg text-md"
+                className="bg-slate-100 lg:p-2 p-4 rounded-lg text-base"
                 value={expense.date}
                 onChange={handleChangeDate}
             />
