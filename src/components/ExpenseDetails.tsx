@@ -54,7 +54,7 @@ const ExpenseDetails = ({expense} : ExpenseDetailsProps)  => {
         leadingActions={leadingActions()} //arrasstrar del ladoo izzq
         trailingActions={trailingActions()} //arrastra del lado derecho
       >
-        <div className="bg-white shadow-lg p-10 w-full border-b border-gray-200 flex gap-5 items-center rounded-lg">
+        <div className="bg-white shadow-lg p-5 w-full border-b border-gray-200 flex gap-5 items-center rounded-lg">
           <div>
             <img 
               src={`/icono_${categoryInfo.icon}.svg`}
